@@ -29,7 +29,19 @@ enum logical_op {
     or_op
 };
 
-//Numeric and Boolean Expressions needed here
+//Numeric and Boolean Expression Enums
+enum num_expr_kind {
+    exp_int,
+    exp_arg,
+    exp_arith,
+    exp_if
+};
+
+enum bool_expr_kind {
+    exp_bool,
+    exp_rel,
+    exp_logic
+};
 
 struct prog;
 struct num_expr;
@@ -42,7 +54,7 @@ struct prog {
 };
 
 struct num_expr {
-    int kind;
+    num_expr_kind kind;
 };
 
 struct int_lit : num_expr {
@@ -66,7 +78,7 @@ struct if_exper : num_expr {
 }
 
 struct bool_expr {
-    int kind;
+    bool_expr_kind kind;
 };
 
 struct bool_lit : bool_expr {
