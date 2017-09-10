@@ -1,11 +1,13 @@
 #pragma once
 
 //Integer Literals
-//Integer
+//int
 
 //Boolean Literals
 //bool 
 
+
+//Arithmatic Operator
 enum arith_op {
     add_op,
     sub_op,
@@ -14,22 +16,27 @@ enum arith_op {
     rem_op
 };
 
+//Relational Operator
 enum rel_op {
     lt_op,
     gt_op,
     eq_op
 };
 
+//Logical Operator
 enum logical_op {
     and_op,
     or_op
 };
+
+//Numeric and Boolean Expressions needed here
 
 struct prog;
 struct num_expr;
 struct bool_expr;
 
 struct prog {
+
     int args;
     num_expr* body;
 };
@@ -60,6 +67,10 @@ struct if_exper : num_expr {
 
 struct bool_expr {
     int kind;
+};
+
+struct bool_lit : bool_expr {
+    bool  val;
 };
 
 struct rel_expr : bool_expr {
