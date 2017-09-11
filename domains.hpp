@@ -1,12 +1,5 @@
 #pragma once
 
-//Integer Literals
-//int
-
-//Boolean Literals
-//bool 
-
-
 //Arithmatic Operator
 enum arith_op {
     add_op,

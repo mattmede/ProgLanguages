@@ -1,16 +1,16 @@
 #include "domains.hpp"
 
-int main() {
+int main(args n) {
     
     //Height of Numeric AST
     auto* nheight = new int_lit {
-        //Figure out what kind of tree it is
-        //Figure out height based on that
+        val = 1;
+        val = new arith_expr(+,1,max(nheight(*lhs,*rhs)));
     }
 
     //Height of Boolean AST
     auto* bheight = new arith_expr {
-        //Figure out what kind of tree it is
-        //Figure out height based on that
+        val = 1;
+        val = new arith_expr(+,1,max(nheight(*lhs,*rhs)));
     }
 }
