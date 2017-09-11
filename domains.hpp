@@ -22,19 +22,6 @@ enum logical_op {
     or_op
 };
 
-//Numeric and Boolean Expression Enums
-enum num_expr_kind {
-    exp_int,
-    exp_arg,
-    exp_arith,
-    exp_if
-};
-
-enum bool_expr_kind {
-    exp_bool,
-    exp_rel,
-    exp_logic
-};
 
 struct prog;
 struct num_expr;
@@ -64,7 +51,7 @@ struct arith_expr : num_expr {
     num_expr* rhs;
 };
 
-struct if_exper : num_expr {
+struct if_expr : num_expr {
     bool_expr* test;
     num_expr* pass;
     num_expr* fail;
@@ -89,3 +76,6 @@ struct logical_expr : bool_expr {
     num_expr* lhs;
     num_expr* rhs;
 };
+
+int nHeight(num_expr* e);
+int bHeight(bool_expr* e);
