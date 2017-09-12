@@ -1,7 +1,5 @@
 #include "domains.hpp"
 
-//Look in book to fix the somethings
-
 int nHeight(int_lit* e){
     return 0;
 }
@@ -14,8 +12,6 @@ int nHeight(arith_expr* e){
     return 1 + std::max(nHeight(e->lhs), nHeight(e->rhs));
 }
 
-//Still not quite sure how to do this one
-//(if BE_test NE_then NE_else)
 int nHeight(if_expr* e){
     return 1 + std::max({nHeight(e->test), nHeight(e->pass), nHeight(e->fail)});
 }
@@ -33,8 +29,6 @@ int nHeight(num_expr* e){
             return nHeight(static_cast<if_expr*>(e));
     }
 }
-
-//Look in book for bool expressions
 
 int bHeight(bool_lit* e){
     return 0;
