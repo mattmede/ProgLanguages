@@ -3,7 +3,7 @@
 //Look in book to fix the somethings
 
 int nHeight(int_lit* e){
-    return e->val;
+    return 0;
 }
 
 int nHeight(arg_expr* e){
@@ -11,43 +11,43 @@ int nHeight(arg_expr* e){
 }
 
 int nHeight(arith_expr* e){
-    return 1 + std::max(nHeight(num_expr* e1), nHeight(num_expr* e2));
+    return 1 + std::max(nHeight(e->lhs), nHeight(e->rhs));
 }
 
 //Still not quite sure how to do this one
 //(if BE_test NE_then NE_else)
 int nHeight(if_expr* e){
-    return something;
+    return 1 + std::max({nHeight(e->test), nHeight(e->pass), nHeight(e->fail)});
 }
 
 
 int nHeight(num_expr* e){
     switch (e->kind) {
         case 0:
-            return height(static_cast<int_lit*>(e));
+            return nHeight(static_cast<int_lit*>(e));
         case 1:
-            return height(static_cast<arg_expr*>(e));
+            return nHeight(static_cast<arg_expr*>(e));
         case 2:
-            return height(static_cast<arith_expr*>(e));
+            return nHeight(static_cast<arith_expr*>(e));
         case 4:
-            return height(static_cast<if_expr*>(e));
+            return nHeight(static_cast<if_expr*>(e));
     }
 }
 
 //Look in book for bool expressions
 
 int bHeight(bool_lit* e){
-    return e->val;
+    return 0;
 }
 
 //(RelationalOperator NE_lhs NE_rhs)
 int bHeight(rel_expr* e){
-    return something;
+    return 1 + std::max(bHeight(e->lhs), bHeight(e->rhs));
 }
 
 //(LogicalOperator NE_lhs NE_rhs)
 int bHeight(logical_expr* e){
-    return something;
+    return 1 + std::max(bHeight(e)->lhs, bHeight(e->rhs));
 }
 
 int bHeight(bool_expr* e){
